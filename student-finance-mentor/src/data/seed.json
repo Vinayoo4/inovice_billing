@@ -1,0 +1,67 @@
+{
+  "users": [
+    {
+      "uid": "1",
+      "email": "student@example.com",
+      "displayName": "Student",
+      "role": "student",
+      "permissions": []
+    },
+    {
+      "uid": "2",
+      "email": "admin@example.com",
+      "displayName": "Admin",
+      "role": "admin",
+      "permissions": ["manage:all"]
+    }
+  ],
+  "budgets": {
+    "1": {
+      "total": 1000,
+      "categories": [
+        { "name": "Rent", "amount": 500 },
+        { "name": "Food", "amount": 250 },
+        { "name": "Entertainment", "amount": 100 },
+        { "name": "Utilities", "amount": 50 }
+      ]
+    }
+  },
+  "expenses": [
+    { "id": "e1", "userId": "1", "category": "Rent", "amount": 500, "date": "2024-05-01" },
+    { "id": "e2", "userId": "1", "category": "Food", "amount": 120, "date": "2024-05-05" },
+    { "id": "e3", "userId": "1", "category": "Entertainment", "amount": 45, "date": "2024-05-10" }
+  ],
+  "scenarios": [
+    {
+      "id": "s1",
+      "name": "Standard Student Loan",
+      "principal": 10000,
+      "rate": 5.5,
+      "term": 10
+    },
+    {
+      "id": "s2",
+      "name": "High Interest Loan",
+      "principal": 10000,
+      "rate": 12.0,
+      "term": 10
+    }
+  ],
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Budgeting 101",
+      "content": "A budget is a spending plan based on income and expenses. In other words, it's an estimate of how much money you'll make and spend over a certain period of time."
+    },
+    {
+      "id": "l2",
+      "title": "Understanding Compound Interest",
+      "content": "Compound interest is the addition of interest to the principal sum of a loan or deposit, or in other words, interest on interest."
+    }
+  ],
+  "progress": {
+    "1": {
+      "completedLessons": []
+    }
+  }
+}
