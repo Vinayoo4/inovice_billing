@@ -14,6 +14,8 @@ import { Icon } from "@iconify/react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { Sidebar } from "./Sidebar";
+import { InstallPrompt } from "../pwa/InstallPrompt";
+import { UpdateBanner } from "../pwa/UpdateBanner";
 
 export const AppLayout: React.FC = () => {
   const { currentUser, signOut } = useAuth();
@@ -92,12 +94,22 @@ export const AppLayout: React.FC = () => {
       </Navbar>
 
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar isOpen={isSidebarOpen} />
+        <div className="hidden md:block h-full">
+          <Sidebar isOpen={isSidebarOpen} />
+        </div>
 
-        <main className="flex-1 overflow-auto p-4">
+        <main className="flex-1 overflow-auto p-4 relative pb-20 md:pb-4">
           <Outlet />
         </main>
       </div>
+
+      {/* Mobile Bottom Nav */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-content1 border-t border-divider z-40">
+        <Sidebar isOpen={true} isMobile={true} />
+      </div>
+
+      <InstallPrompt />
+      <UpdateBanner />
     </div>
   );
 };

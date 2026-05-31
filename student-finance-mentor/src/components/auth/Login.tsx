@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Login: React.FC = () => {
   const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
@@ -26,12 +27,12 @@ export const Login: React.FC = () => {
       setError("");
       setLoading(true);
 
-      const user = await signIn(email);
+      const user = await signIn(email, password);
 
       if (user.role === 'admin') {
          navigate("/admin");
       } else {
-         navigate("/budget");
+         navigate("/");
       }
     } catch (err: any) {
       console.error("Login error:", err);
@@ -68,6 +69,16 @@ export const Login: React.FC = () => {
               startContent={<Icon icon="lucide:mail" className="text-default-400" width={16} />}
             />
 
+            <Input
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              isRequired
+              startContent={<Icon icon="lucide:lock" className="text-default-400" width={16} />}
+            />
+
             <div className="pt-2">
               <Button
                 type="submit"
@@ -78,14 +89,21 @@ export const Login: React.FC = () => {
                 Sign In
               </Button>
             </div>
+
+            <div className="text-center mt-2">
+              <span className="text-sm">Don't have an account? </span>
+              <Button variant="light" color="primary" size="sm" onPress={() => navigate('/register')}>
+                Register here
+              </Button>
+            </div>
           </form>
 
           <Divider className="my-4" />
 
           <div className="text-center text-small text-foreground-500">
-            <p>For demo purposes:</p>
-            <p>Admin: admin@example.com</p>
-            <p>Student: any other email</p>
+            <p>Demo accounts (password in seed.json):</p>
+            <p>Admin: admin@sfm.com / admin123</p>
+            <p>Student: student@sfm.com / student123</p>
           </div>
         </CardBody>
       </Card>

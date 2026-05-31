@@ -12,22 +12,28 @@ export default defineConfig({
         name: 'Student Finance Mentor',
         short_name: 'FinanceMentor',
         description: 'App for teaching students budgeting and loans',
-        theme_color: '#ffffff',
+        theme_color: '#1d4ed8',
+        background_color: '#eff6ff',
+        display: 'standalone',
+        start_url: '/',
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: '/icons/icon-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           },
           {
-            src: 'pwa-512x512.png',
+            src: '/icons/icon-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           }
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}']
+        globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
+        navigateFallback: '/offline.html'
       }
     })
   ]
