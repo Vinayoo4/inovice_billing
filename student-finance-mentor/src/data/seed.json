@@ -1,67 +1,210 @@
 {
   "users": [
     {
-      "uid": "1",
-      "email": "student@example.com",
-      "displayName": "Student",
+      "uid": "student1",
+      "email": "student@sfm.com",
+      "displayName": "Demo Student",
       "role": "student",
+      "password": "student123",
       "permissions": []
     },
     {
-      "uid": "2",
-      "email": "admin@example.com",
+      "uid": "admin1",
+      "email": "admin@sfm.com",
       "displayName": "Admin",
       "role": "admin",
+      "password": "admin123",
       "permissions": ["manage:all"]
     }
   ],
-  "budgets": {
-    "1": {
-      "total": 1000,
+  "budgetTemplates": [
+    {
+      "id": "t1",
+      "name": "Tight Budget",
+      "description": "₹8,000/month",
       "categories": [
-        { "name": "Rent", "amount": 500 },
-        { "name": "Food", "amount": 250 },
-        { "name": "Entertainment", "amount": 100 },
-        { "name": "Utilities", "amount": 50 }
+        { "name": "Rent", "percentage": 40 },
+        { "name": "Food", "percentage": 25 },
+        { "name": "Transport", "percentage": 10 },
+        { "name": "Misc", "percentage": 25 }
+      ]
+    },
+    {
+      "id": "t2",
+      "name": "Moderate Budget",
+      "description": "₹15,000/month",
+      "categories": [
+        { "name": "Rent", "percentage": 35 },
+        { "name": "Food", "percentage": 20 },
+        { "name": "Transport", "percentage": 10 },
+        { "name": "Savings", "percentage": 15 },
+        { "name": "Misc", "percentage": 20 }
+      ]
+    },
+    {
+      "id": "t3",
+      "name": "Comfortable Budget",
+      "description": "₹25,000/month",
+      "categories": [
+        { "name": "Rent", "percentage": 30 },
+        { "name": "Food", "percentage": 18 },
+        { "name": "Transport", "percentage": 8 },
+        { "name": "Savings", "percentage": 20 },
+        { "name": "Entertainment", "percentage": 8 },
+        { "name": "Misc", "percentage": 16 }
       ]
     }
-  },
+  ],
   "expenses": [
-    { "id": "e1", "userId": "1", "category": "Rent", "amount": 500, "date": "2024-05-01" },
-    { "id": "e2", "userId": "1", "category": "Food", "amount": 120, "date": "2024-05-05" },
-    { "id": "e3", "userId": "1", "category": "Entertainment", "amount": 45, "date": "2024-05-10" }
+    { "id": "e1", "userId": "student1", "category": "Rent", "amount": 3200, "date": "2024-05-01" },
+    { "id": "e2", "userId": "student1", "category": "Food", "amount": 400, "date": "2024-05-02" },
+    { "id": "e3", "userId": "student1", "category": "Transport", "amount": 150, "date": "2024-05-03" },
+    { "id": "e4", "userId": "student1", "category": "Misc", "amount": 200, "date": "2024-05-05" },
+    { "id": "e5", "userId": "student1", "category": "Food", "amount": 300, "date": "2024-05-08" },
+    { "id": "e6", "userId": "student1", "category": "Transport", "amount": 100, "date": "2024-05-10" },
+    { "id": "e7", "userId": "student1", "category": "Food", "amount": 500, "date": "2024-05-12" },
+    { "id": "e8", "userId": "student1", "category": "Misc", "amount": 450, "date": "2024-05-15" },
+    { "id": "e9", "userId": "student1", "category": "Food", "amount": 250, "date": "2024-05-18" },
+    { "id": "e10", "userId": "student1", "category": "Transport", "amount": 150, "date": "2024-05-20" },
+    { "id": "e11", "userId": "student1", "category": "Misc", "amount": 300, "date": "2024-05-22" },
+    { "id": "e12", "userId": "student1", "category": "Food", "amount": 350, "date": "2024-05-25" },
+    { "id": "e13", "userId": "student1", "category": "Transport", "amount": 120, "date": "2024-05-28" },
+    { "id": "e14", "userId": "student1", "category": "Food", "amount": 200, "date": "2024-05-29" },
+    { "id": "e15", "userId": "student1", "category": "Misc", "amount": 150, "date": "2024-05-30" }
   ],
   "scenarios": [
     {
       "id": "s1",
-      "name": "Standard Student Loan",
-      "principal": 10000,
-      "rate": 5.5,
-      "term": 10
+      "name": "Education Loan (Small)",
+      "principal": 400000,
+      "rate": 8.5,
+      "term": 5
     },
     {
       "id": "s2",
-      "name": "High Interest Loan",
-      "principal": 10000,
+      "name": "Education Loan (Large)",
+      "principal": 700000,
+      "rate": 9.0,
+      "term": 7
+    },
+    {
+      "id": "s3",
+      "name": "Personal Loan",
+      "principal": 100000,
+      "rate": 14.0,
+      "term": 2
+    },
+    {
+      "id": "s4",
+      "name": "Home Loan",
+      "principal": 2000000,
+      "rate": 7.5,
+      "term": 20
+    },
+    {
+      "id": "s5",
+      "name": "Bike Loan",
+      "principal": 80000,
       "rate": 12.0,
-      "term": 10
+      "term": 3
     }
   ],
   "lessons": [
     {
       "id": "l1",
-      "title": "Budgeting 101",
-      "content": "A budget is a spending plan based on income and expenses. In other words, it's an estimate of how much money you'll make and spend over a certain period of time."
+      "title": "What is compound interest?",
+      "category": "Basics",
+      "readTime": "3 min",
+      "content": "Compound interest is the interest on a loan or deposit calculated based on both the initial principal and the accumulated interest from previous periods. \n\nThink of it as 'interest on interest'. It will make a sum grow at a faster rate than simple interest, which is calculated only on the principal amount.\n\nThe rate at which compound interest accrues depends on the frequency of compounding, such that the higher the number of compounding periods, the greater the compound interest.\n\nOver long periods, compound interest can significantly multiply your wealth, which is why starting to save early is highly recommended.",
+      "quiz": [
+        { "question": "What is compound interest?", "options": ["Interest on principal only", "Interest on interest and principal", "A fixed fee", "A penalty"], "correct": 1 },
+        { "question": "Which grows faster?", "options": ["Simple interest", "Compound interest", "They grow at the same rate", "Depends on the bank"], "correct": 1 },
+        { "question": "How does compounding frequency affect the total?", "options": ["More frequency = more interest", "More frequency = less interest", "Frequency doesn't matter", "Only yearly matters"], "correct": 0 }
+      ]
     },
     {
       "id": "l2",
-      "title": "Understanding Compound Interest",
-      "content": "Compound interest is the addition of interest to the principal sum of a loan or deposit, or in other words, interest on interest."
+      "title": "How EMI works",
+      "category": "Loans",
+      "readTime": "4 min",
+      "content": "Equated Monthly Installment (EMI) is a fixed payment amount made by a borrower to a lender at a specified date each calendar month. \n\nEquated monthly installments are applied to both interest and principal each month so that over a specified number of years, the loan is paid off in full.\n\nIn the initial years of a loan, a larger portion of the EMI goes towards paying the interest. As time passes and the principal reduces, the interest component decreases and the principal repayment component increases.\n\nUnderstanding EMI helps you plan your monthly cash flows better and avoid taking loans you cannot afford.",
+      "quiz": [
+        { "question": "What does EMI stand for?", "options": ["Equal Monthly Income", "Equated Monthly Installment", "Estimated Money Interest", "Extra Monthly Installment"], "correct": 1 },
+        { "question": "In early years, what makes up most of the EMI?", "options": ["Principal", "Interest", "Taxes", "Insurance"], "correct": 1 },
+        { "question": "Does EMI amount change every month for a fixed rate loan?", "options": ["Yes, it increases", "Yes, it decreases", "No, it stays the same", "Depends on the bank"], "correct": 2 }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "50-30-20 Budgeting Rule",
+      "category": "Budgeting",
+      "readTime": "3 min",
+      "content": "The 50/30/20 rule is a simple and practical budgeting framework. It suggests dividing your after-tax income into three categories of spending: 50% for needs, 30% for wants, and 20% for savings or paying off debt.\n\nNeeds are your absolute essentials like rent, groceries, basic utilities, and minimum debt payments.\n\nWants include dining out, entertainment, subscriptions, and travel.\n\nSavings include adding to your emergency fund, investing for retirement, and paying extra towards debt.\n\nThis rule provides a clear guideline, but you can adjust the percentages based on your specific financial situation.",
+      "quiz": [
+        { "question": "What does the 50 represent in the 50/30/20 rule?", "options": ["Savings", "Wants", "Needs", "Taxes"], "correct": 2 },
+        { "question": "What category does dining out fall under?", "options": ["Needs", "Savings", "Wants", "Investments"], "correct": 2 },
+        { "question": "Can the 50/30/20 rule be adjusted?", "options": ["No, it's a strict law", "Yes, based on your situation", "Only if you earn over 1 Lakh", "Only the 20 can be changed"], "correct": 1 }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Emergency Fund Basics",
+      "category": "Savings",
+      "readTime": "2 min",
+      "content": "An emergency fund is a bank account with money set aside for large, unexpected expenses. Examples include medical bills, major car repairs, or sudden job loss.\n\nA good rule of thumb is to save 3 to 6 months' worth of essential living expenses. If you spend ₹10,000 a month on needs, aim for an emergency fund of ₹30,000 to ₹60,000.\n\nKeep this money in a highly liquid account, like a high-yield savings account or fixed deposit that can be broken easily, so you can access it quickly when needed.\n\nHaving an emergency fund prevents you from going into high-interest debt when bad things happen.",
+      "quiz": [
+        { "question": "What is an emergency fund for?", "options": ["Vacations", "Unexpected large expenses", "Investing in stocks", "Buying a new phone"], "correct": 1 },
+        { "question": "How much should ideally be in an emergency fund?", "options": ["1 month of expenses", "3-6 months of expenses", "1 year of income", "₹5000 only"], "correct": 1 },
+        { "question": "Where should you keep an emergency fund?", "options": ["In the stock market", "In a locked 10-year bond", "In a liquid, accessible account", "Under the mattress"], "correct": 2 }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Good Debt vs Bad Debt",
+      "category": "Loans",
+      "readTime": "4 min",
+      "content": "Not all debt is bad. 'Good debt' is money owed for things that can help build wealth or increase income over time, such as student loans (investing in your earning potential) or a mortgage (buying an appreciating asset).\n\n'Bad debt' involves borrowing money to purchase rapidly depreciating assets or for consumption. Examples include high-interest credit card debt used for vacations or expensive clothes.\n\nWhile good debt has lower interest rates and tax benefits, bad debt has very high rates that can trap you in a cycle of repayment.\n\nAlways evaluate the return on investment before taking on any debt.",
+      "quiz": [
+        { "question": "Which of these is typically considered 'Good Debt'?", "options": ["Credit card debt for a vacation", "Education loan", "Car loan for a luxury vehicle", "Personal loan for a wedding"], "correct": 1 },
+        { "question": "What characterizes 'Bad Debt'?", "options": ["Low interest rates", "Tax benefits", "High interest rates for depreciating assets", "It increases your net worth"], "correct": 2 },
+        { "question": "Should you avoid all debt completely?", "options": ["Yes, all debt is evil", "No, some debt can help build wealth", "Yes, cash is always king", "Only if you are a student"], "correct": 1 }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "How to read a loan statement",
+      "category": "Loans",
+      "readTime": "3 min",
+      "content": "A loan statement provides a snapshot of your loan account. Key details to check include the Principal Outstanding (how much you still owe), Interest Rate, and the EMI amount.\n\nLook for the breakdown of your last payment: how much went to principal and how much to interest. Over time, the principal portion should increase.\n\nAlso, check for any penalties, late fees, or bounce charges. If you see unrecognized charges, contact your bank immediately.\n\nReviewing your statement helps you ensure payments are correctly applied and tracks your progress toward becoming debt-free.",
+      "quiz": [
+        { "question": "What does Principal Outstanding mean?", "options": ["Total interest paid", "Original loan amount", "Amount you still owe", "Next month's EMI"], "correct": 2 },
+        { "question": "Why check the breakdown of your payment?", "options": ["To see if interest rate changed", "To verify how much principal was reduced", "To calculate taxes", "It's not important"], "correct": 1 },
+        { "question": "What should you do if you see a late fee but paid on time?", "options": ["Ignore it", "Pay it to avoid trouble", "Contact the bank immediately", "Wait for the next statement"], "correct": 2 }
+      ]
+    },
+    {
+      "id": "l7",
+      "title": "Savings rate and why it matters",
+      "category": "Savings",
+      "readTime": "3 min",
+      "content": "Your savings rate is the percentage of your gross income that you save each month. If you earn ₹20,000 and save ₹4,000, your savings rate is 20%.\n\nYour savings rate is the most important factor in determining how quickly you can build wealth and achieve financial independence. A high income with a 0% savings rate still leaves you broke.\n\nIncreasing your savings rate involves either decreasing your expenses or increasing your income (and not inflating your lifestyle).\n\nAim for at least a 20% savings rate, but pushing it higher will accelerate your financial goals dramatically.",
+      "quiz": [
+        { "question": "How is savings rate calculated?", "options": ["(Savings / Income) * 100", "(Income / Expenses) * 100", "(Savings - Expenses) / 100", "Total savings in bank"], "correct": 0 },
+        { "question": "What happens if you have a high income but 0% savings rate?", "options": ["You are wealthy", "You build wealth slowly", "You build no wealth", "You pay less tax"], "correct": 2 },
+        { "question": "How can you increase your savings rate?", "options": ["Increase expenses", "Decrease income", "Increase income without increasing expenses", "Take a personal loan"], "correct": 2 }
+      ]
+    },
+    {
+      "id": "l8",
+      "title": "Student loan repayment strategies",
+      "category": "Loans",
+      "readTime": "4 min",
+      "content": "Repaying student loans effectively requires strategy. Firstly, always make at least the minimum EMI payment on time to protect your credit score.\n\nConsider paying more than the EMI. Any extra payment goes directly to reducing the principal, which significantly lowers the total interest you will pay over the loan term.\n\nIf you have multiple loans, use the 'Avalanche Method' (pay extra on the highest interest rate loan first) or the 'Snowball Method' (pay off the smallest balance first for psychological wins).\n\nAlso, check if you can claim tax deductions on the interest paid under Section 80E (in India), which effectively reduces the cost of the loan.",
+      "quiz": [
+        { "question": "What happens when you pay extra on top of your EMI?", "options": ["It reduces future interest", "It goes only to principal", "Both A and B", "The bank rejects it"], "correct": 2 },
+        { "question": "What is the Avalanche Method?", "options": ["Paying off smallest loans first", "Paying off highest interest loans first", "Ignoring loans until they freeze", "Paying only interest"], "correct": 1 },
+        { "question": "Under which section can you claim tax deductions on education loan interest in India?", "options": ["Section 80C", "Section 80D", "Section 80E", "Section 80G"], "correct": 2 }
+      ]
     }
-  ],
-  "progress": {
-    "1": {
-      "completedLessons": []
-    }
-  }
+  ]
 }

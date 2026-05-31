@@ -34,41 +34,42 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('currentUser');
-    if (storedUser) {
-      setCurrentUser(JSON.parse(storedUser));
+    const session = localStorage.getItem('sfm_session');
+    if (session) {
+      setCurrentUser(JSON.parse(session));
     }
     setLoading(false);
   }, []);
 
-  const signIn = async (email: string): Promise<User> => {
-    let user: User;
-    if (email === "admin@example.com") {
-      user = {
-        uid: "2",
-        email: "admin@example.com",
-        displayName: "Admin",
-        role: "admin",
-        permissions: ["manage:all"],
-        createdAt: new Date().toISOString()
-      };
-    } else {
-      user = {
-        uid: "1",
-        email: email,
-        displayName: "Student",
-        role: "student",
-        permissions: [],
-        createdAt: new Date().toISOString()
-      };
+  const signIn = async (email: string, password?: string): Promise<User> => {
+    const usersStr = localStorage.getItem('users');
+    if (!usersStr) {
+      throw new Error("No users found in database");
     }
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    setCurrentUser(user);
-    return user;
+
+    const users = JSON.parse(usersStr);
+    const user = users.find((u: any) => u.email === email && u.password === password);
+
+    if (!user) {
+      throw new Error("Invalid email or password");
+    }
+
+    const sessionUser: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      role: user.role as UserRole,
+      permissions: user.permissions || [],
+      createdAt: user.createdAt || new Date().toISOString()
+    };
+
+    localStorage.setItem('sfm_session', JSON.stringify(sessionUser));
+    setCurrentUser(sessionUser);
+    return sessionUser;
   };
 
   const signOut = async (): Promise<void> => {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('sfm_session');
     setCurrentUser(null);
   };
 
