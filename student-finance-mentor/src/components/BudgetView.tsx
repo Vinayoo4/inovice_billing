@@ -78,7 +78,7 @@ export const BudgetView: React.FC = () => {
   const totalPercentage = categories.reduce((sum, cat) => sum + cat.percentage, 0);
 
   // Filter expenses by month
-  const userExpenses = expenses.filter(e => e.userId === userId && e.date.includes(`-2024-${selectedMonth}-`) || e.date.includes(`-2024-${selectedMonth}`)); // simplistic check for YYYY-MM
+  const userExpenses = expenses.filter(e => e.userId === userId && e.date.startsWith(`2024-${selectedMonth}`));
   const totalSpent = userExpenses.reduce((sum, e) => sum + e.amount, 0);
   const budgetAmount = parseFloat(monthlyIncome) || 0;
   const remaining = budgetAmount - totalSpent;
