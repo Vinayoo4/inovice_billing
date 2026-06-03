@@ -37,7 +37,14 @@ export const Dashboard: React.FC = () => {
   // Calculate Budget Health
   const userBudget = budgets[userId];
   const budgetAmount = userBudget ? userBudget.total : 0;
-  const userExpenses = expenses.filter(e => e.userId === userId);
+
+  // Use current year-month to compute metrics, falling back to seed data month if none exist
+  const currentYearMonth = new Date().toISOString().slice(0, 7); // YYYY-MM
+  // We check if there are expenses in the current month, else fallback to '2024-05' for demo purposes
+  const hasCurrentMonthExpenses = expenses.some(e => e.userId === userId && e.date.startsWith(currentYearMonth));
+  const activeMonthPrefix = hasCurrentMonthExpenses ? currentYearMonth : "2024-05";
+
+  const userExpenses = expenses.filter(e => e.userId === userId && e.date.startsWith(activeMonthPrefix));
   const totalSpent = userExpenses.reduce((sum, e) => sum + e.amount, 0);
   const remainingPercentage = budgetAmount > 0 ? ((budgetAmount - totalSpent) / budgetAmount) * 100 : 0;
 

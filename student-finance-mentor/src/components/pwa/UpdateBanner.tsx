@@ -8,11 +8,11 @@ export const UpdateBanner: React.FC = () => {
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
   } = useRegisterSW({
-    onRegistered(r) {
-      console.log('SW Registered: ', r);
+    onRegistered() {
+      // SW registered
     },
     onRegisterError(error) {
-      console.log('SW registration error', error);
+      console.error('SW registration error', error);
     },
   });
 
